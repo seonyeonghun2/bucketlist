@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bucket lists</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="text-center">my bucket lists</h1>
+    <h2 class="text-center">너만의 버킷리스트</h2>
+    <div class="list">
+      <form id="write-form">
+        <input type="text" name="text" required id="input_text" />
+        <input type="submit" value="등록" />
+      </form>
+    </div>
+    <!-- /.list -->
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const writeForm = document.querySelector("#write-form");
+        writeForm.addEventListener("submit", async function (e) {
+          e.preventDefault(); // 전송 후 페이지 새로고침 금지
+          const response = await fetch("http://localhost:3000/add", {
+            method: "post",
+            header: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              text: document.querySelector("#input_text").value,
+            }),
+          });
+          console.log(response.json())
+        });
+      });
+    </script>
+  </body>
+</html>

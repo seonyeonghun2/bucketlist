@@ -1,0 +1,88 @@
+@charset "utf-8";
+:root {
+  --primary-bg-color: rgb(254, 168, 0);
+  --secondary-bg-color: rgb(255, 237, 202);
+  --primary-text-color: rgb(255, 94, 29);
+  --secondary-text-color: rgb(255, 254, 246);
+}
+body {
+  background-color: var(--primary-bg-color);
+}
+
+h1 {
+  color: var(--primary-text-color);
+  font-size: 16px;
+  text-transform: capitalize;
+}
+h2 {
+  color: var(--secondary-text-color);
+}
+
+.list {
+  background-color: var(--secondary-bg-color);
+  width: 55%;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
+/* 후손 선택자(Descendant Selector) | 하위 선택자 */
+
+label {
+  display: block;
+  margin: 0 0 10px 0;
+}
+label span {
+  display: inline-block;
+  text-indent: 10px;
+  padding: 5px 0;
+  width: calc(100% - 40px);
+}
+.text-center {
+  text-align: center;
+}
+.desc-bg {
+  background-color: var(--primary-bg-color);
+}
+.desc-text {
+  color: var(--secondary-text-color);
+}
+.corner-rounded {
+  border-radius: 20px;
+}
+/* check 박스 라운드 처리 */
+.circle {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  cursor: pointer;
+  position: relative;
+  top: 4px;
+}
+.circle:after {
+  content: "\2714"; /* 체크박스 특수문자 */
+  font-size: 24px;
+  color: #0f0;
+  text-shadow: 0 1px #333;
+  position: absolute;
+  top: -14px;
+  left: 0;
+  opacity: 0; /* 처음엔 안보이게 처리 */
+  transition: 0.2s; /* CSS변화에 시간차 처리 */
+}
+/* input이 체크되면 특수문자 보이게 처리 */
+#chk1:checked + .circle:after,
+#chk2:checked + .circle:after,
+#chk3:checked + .circle:after,
+#chk4:checked + .circle:after {
+  opacity: 1;
+}
+
+/* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
+#chk1,
+#chk2,
+#chk3,
+#chk4 {
+  position: absolute;
+  left: -999em;
+}

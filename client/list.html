@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bucket lists</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="text-center">my bucket lists</h1>
+    <h2 class="text-center">너만의 버킷리스트</h2>
+    <div class="list">
+      <!-- <div class="row">
+        <label for="chk">
+            <input type="checkbox" checked id="chk1" />
+            <i class="circle"></i>
+            <span class="desc-bg desc-text corner-rounded">운동 꾸준히 하기</span>
+        </label>
+      </div>
+      <div class="row">
+        <label for="chk">
+            <input type="checkbox" checked id="chk2" />
+            <i class="circle"></i>
+            <span class="desc-bg desc-text corner-rounded">
+              커뮤니티로 새로운 사람 사귀기
+            </span>
+                  </div>
+        </label>
+      <div class="row">
+        <label for="chk">
+            <input type="checkbox" id="chk3" />
+            <i class="circle"></i>
+            <span class="desc-bg desc-text corner-rounded">포토 에세이 출간하기</span>
+        </label>
+      </div> -->
+    </div>
+    <script>
+      window.addEventListener("DOMContentLoaded", async () => {
+        const container = document.querySelector(".list");
+        const response = await fetch("http://localhost:3000/all");
+        const buckets = await response.json();
+        //console.log(buckets);
+        container.innerHTML = buckets.map(
+          (bucket) => `<div class="row">
+        <label for="chk">
+            <input type="checkbox" checked id="chk${bucket.id}" />
+            <i class="circle"></i>
+            <span class="desc-bg desc-text corner-rounded">${bucket.text}</span>
+        </label>
+      </div>`
+        ).join("");
+      });
+    </script>
+  </body>
+</html>
