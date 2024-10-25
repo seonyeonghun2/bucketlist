@@ -8,11 +8,13 @@ let idx = 3;
 let buckets=[
   {
     id: 1,
-    text: "에펠탑에서 사진찍기"
+    text: "에펠탑에서 사진찍기",
+    isDone: true
   },
   {
     id: 2,
-    text: "설악산 단풍구경하기"
+    text: "설악산 단풍구경하기",
+    isDone: true
   },
 ]; //배열(값을 여러개 저장)
 
@@ -34,7 +36,8 @@ app.post('/add', (req, res) => { // 버킷리스트 항목을 송신
     console.log(req.body.text); // POST 요청 텍스트를 확인
     buckets.push({
       id: idx++,
-      text: req.body.text
+      text: req.body.text,
+      isDone: false
     });
     res.json(buckets);
   })
