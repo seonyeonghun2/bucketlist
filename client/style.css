@@ -17,11 +17,17 @@ h1 {
 h2 {
   color: var(--secondary-text-color);
 }
-
+.wrapper {
+  width: 55%;
+  margin: 0 auto;  
+}
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 .5rem 0
+}
 .list {
   background-color: var(--secondary-bg-color);
-  width: 55%;
-  margin: 0 auto;
   padding: 20px 30px;
 }
 /* 후손 선택자(Descendant Selector) | 하위 선택자 */
@@ -71,18 +77,13 @@ label span {
   transition: 0.2s; /* CSS변화에 시간차 처리 */
 }
 /* input이 체크되면 특수문자 보이게 처리 */
-#chk1:checked + .circle:after,
-#chk2:checked + .circle:after,
-#chk3:checked + .circle:after,
-#chk4:checked + .circle:after {
+/* id 속성이 chk로 시작되면서, 클릭해서 checked 상태인 요소 다음에 오는 circle클래스*/
+[id^="chk"]:checked + .circle:after {
   opacity: 1;
 }
 
 /* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
-#chk1,
-#chk2,
-#chk3,
-#chk4 {
+[id^="chk"] {
   position: absolute;
   left: -999em;
 }

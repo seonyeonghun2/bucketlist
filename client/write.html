@@ -9,11 +9,13 @@
   <body>
     <h1 class="text-center">my bucket lists</h1>
     <h2 class="text-center">너만의 버킷리스트</h2>
-    <div class="list">
-      <form id="write-form">
-        <input type="text" name="text" required id="input_text" />
-        <input type="submit" value="등록" />
-      </form>
+    <div class="wrapper">
+      <div class="list">
+        <form id="write-form">
+          <input type="text" name="text" required id="input_text" />
+          <input type="submit" value="등록" />
+        </form>
+      </div>
     </div>
     <!-- /.list -->
     <script>
@@ -23,16 +25,30 @@
           e.preventDefault(); // 전송 후 페이지 새로고침 금지
           const response = await fetch("http://localhost:3000/add", {
             method: "post",
-            header: {
+            headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
               text: document.querySelector("#input_text").value,
             }),
           });
-          console.log(response.json())
+          const result = response.json();
+          clearInput(); // 버킷 리스트 항목 입력값을 삭제
+          // JSON 객체
+          // 1) .stringify : OBJECT를 JSON 으로 변환
+          // 2) .parse : JSON을 OBJECT로 변환
+          // console.log(result); // JSON 데이터를 객체
         });
       });
+      function clearInput() {
+        let choice = confirm("버킷리스트 목록 화면으로 이동하시겠습니까?");
+        if (choice) {
+          location.href = "/client/list.html";
+        } else {
+          document.querySelector("#input_text").value = ""; // 빈값
+          document.querySelector("#input_text").focus(); // 포커스 생성
+        }        
+      }
     </script>
   </body>
 </html>
