@@ -1,0 +1,13 @@
+{
+  "name": "bucketlist",
+  "version": "1.0.0",
+  "description": "버킷 리스트를 등록하고 관리하는 웹앱 프로젝트",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd server && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
