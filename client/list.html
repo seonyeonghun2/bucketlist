@@ -21,12 +21,13 @@
         const container = document.querySelector(".list");
         const response = await fetch("http://localhost:3000/all");
         const buckets = await response.json();
+        //console.log(buckets);
         const counter = document.querySelector("#count");
         counter.innerHTML = buckets.length;
         container.innerHTML = buckets.map(
           (bucket) => `<div class="row">
         <label for="chk">
-            <input type="checkbox" checked id="chk${bucket.id}" />
+            <input type="checkbox" ${bucket.isDone ? "checked":""} id="chk${bucket.id}" />
             <i class="circle"></i>
             <span class="desc-bg desc-text corner-rounded">${bucket.text}</span>
         </label>
