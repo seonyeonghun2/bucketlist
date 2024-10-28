@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
-const port = 5002
+const dotenv = require("dotenv");
+dotenv.config();
+const port = process.env.PORT || 80;
 const cors = require('cors');
 
 // in-memory : 메모리(=휘발성)에 저장할 버킷리스트 목록
