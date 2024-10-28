@@ -42,6 +42,10 @@ app.post('/add', (req, res) => { // 버킷리스트 항목을 송신
     res.json(buckets);
   })
 
+app.delete('/remove/:id', (req, res) => {
+  // console.log("삭제할 아이템 : ", req.params.id)
+    res.json(buckets.splice(req.params.id, 1));
+})
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
