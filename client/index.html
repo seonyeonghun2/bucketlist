@@ -19,7 +19,7 @@
     <script>
       window.addEventListener("DOMContentLoaded", async () => {
         const container = document.querySelector(".list");
-        const response = await fetch("http://localhost:3000/all");
+        const response = await fetch("https://polar-inlet-38616-1ff1f11ce3de.herokuapp.com/all");
         const buckets = await response.json();
         //console.log(buckets);
         const counter = document.querySelector("#count");
@@ -30,6 +30,7 @@
             <input type="checkbox" ${bucket.isDone ? "checked":""} id="chk${bucket.id}" />
             <i class="circle"></i>
             <span class="desc-bg desc-text corner-rounded">${bucket.text}</span>
+            <button class="remove"><img src="trash.png" alt="삭제"></button>
         </label>
       </div>`
         ).join("");
@@ -37,6 +38,17 @@
         const writeBtn = document.querySelector("#write");
         writeBtn.addEventListener("click", function(){
           location.href = "/client/write.html"
+        })
+        const removeBtns = document.querySelectorAll(".remove");
+        removeBtns.forEach((removeBtn, i) => {
+          removeBtn.addEventListener("click", async () => {
+            // 서버에 삭제 요청
+            const response = await fetch("http://localhost:3000/remove/"+i, {
+              method: "delete"
+            })
+            //console.log(response.json()); // 서버응답 데이터를 해석
+            location.reload(); // 화면 새로고침
+          })
         })
       });
     </script>

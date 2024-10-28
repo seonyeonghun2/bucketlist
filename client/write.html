@@ -23,7 +23,7 @@
         const writeForm = document.querySelector("#write-form");
         writeForm.addEventListener("submit", async function (e) {
           e.preventDefault(); // 전송 후 페이지 새로고침 금지
-          const response = await fetch("http://localhost:3000/add", {
+          const response = await fetch("https://polar-inlet-38616-1ff1f11ce3de.herokuapp.com/add", {
             method: "post",
             headers: {
               "Content-Type": "application/json",
@@ -43,7 +43,7 @@
       function clearInput() {
         let choice = confirm("버킷리스트 목록 화면으로 이동하시겠습니까?");
         if (choice) {
-          location.href = "/client/list.html";
+          location.href = "/client/index.html";
         } else {
           document.querySelector("#input_text").value = ""; // 빈값
           document.querySelector("#input_text").focus(); // 포커스 생성

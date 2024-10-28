@@ -87,3 +87,17 @@ label span {
   position: absolute;
   left: -999em;
 }
+[for="chk"] {
+  display: flex;
+  gap: .5rem
+}
+.remove {
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem
+}
+.remove img {
+  position: relative; 
+  top: 2px;
+  left: -2px
+}
